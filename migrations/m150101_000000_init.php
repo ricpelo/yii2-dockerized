@@ -9,7 +9,7 @@ class m150101_000000_init extends \yii\db\Migration
         $this->createTable('user', [
             'id' => Schema::TYPE_PK,
             'username' => Schema::TYPE_STRING . ' NOT NULL',
-            'is_email_verified' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+            'is_email_verified' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT false',
             'auth_key' => Schema::TYPE_STRING . '(32) NOT NULL',
             'password_hash' => Schema::TYPE_STRING . ' NOT NULL',
             'password_reset_token' => Schema::TYPE_STRING,
@@ -20,7 +20,7 @@ class m150101_000000_init extends \yii\db\Migration
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
             'created_at' => Schema::TYPE_DATETIME . ' NOT NULL',
             'updated_at' => Schema::TYPE_DATETIME . ' NOT NULL',
-        ], 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB');
+        ], '');
     }
 
     public function down()

@@ -2,6 +2,16 @@ FROM codemix/yii2-base:2.0.10-php7-apache
 #FROM codemix/yii2-base:2.0.10-php7-fpm
 #FROM codemix/yii2-base:2.0.10-hhvm
 
+RUN apt-get update \
+    && apt-get -y install \
+        git \
+        g++ \
+        libicu-dev \
+        libmcrypt-dev \
+        zlib1g-dev \
+        libpq-dev \
+        --no-install-recommends \
+    && docker-php-ext-install pdo_pgsql
 
 # Composer packages are installed first. This will only add packages
 # that are not already in the yii2-base image.
