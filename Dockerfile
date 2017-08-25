@@ -23,7 +23,7 @@ RUN apt-get update \
 # Composer packages are installed first. This will only add packages
 # that are not already in the yii2-base image.
 COPY composer.json /var/www/html/
-#COPY composer.lock /var/www/html/
+COPY composer.lock /var/www/html/
 
 ARG API_TOKEN
 
