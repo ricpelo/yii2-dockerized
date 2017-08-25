@@ -2,7 +2,10 @@ version: '2'
 services:
 
     web:
-        build: ./
+        build:
+            context: .
+            args:
+                API_TOKEN: "<YOUR GITHUB API TOKEN>"
         volumes:
             - ./:/var/www/html/
         links:
@@ -10,7 +13,6 @@ services:
         environment:
             ENABLE_ENV_FILE: 1
             ENABLE_LOCALCONF: 1
-            API_TOKEN: "<YOUR GITHUB API TOKEN>"
 
 
         # For Apache based image:

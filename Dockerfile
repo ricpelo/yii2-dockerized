@@ -1,4 +1,4 @@
-FROM codemix/yii2-base:2.0.12-php7-apache
+FROM ricpelo/yii2-base:2.0.12-php7.1-apache
 #FROM codemix/yii2-base:2.0.12-php7-fpm
 #FROM codemix/yii2-base:2.0.12-hhvm
 
@@ -24,7 +24,11 @@ RUN apt-get update \
 # that are not already in the yii2-base image.
 COPY composer.json /var/www/html/
 #COPY composer.lock /var/www/html/
+
+ARG API_TOKEN
+
 RUN composer self-update --no-progress && \
+    composer config -g github-oauth.github.com $API_TOKEN && \
     composer install --no-progress
 
 # Copy the working dir to the image's web root
